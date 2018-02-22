@@ -92,7 +92,11 @@ const users = (state = [], action) => {
 
     case 'DELETE_USER': {
       const { user } = action.payload;
-      return state.users.filter(item => item.id !== user.id);
+      const filtered = state.users.filter(item => item.id !== user.id);
+      return {
+        ...state,
+        users: filtered
+      };
     }
 
     default:

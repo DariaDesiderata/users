@@ -5,6 +5,8 @@ import UserList from './UserList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import { connect } from 'react-redux';
+import { addUser } from '../actions/actions';
 
 const style = {
   position: 'absolute',
@@ -20,7 +22,7 @@ class App extends Component {
             <h1 className="App-title">User List</h1>
           </header>
           <UserList />
-          <FloatingActionButton style={style}>
+          <FloatingActionButton style={style} onClick={this.props.addUser}>
             <ContentAdd />
           </FloatingActionButton>
         </div>
@@ -28,5 +30,8 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+const mapStateToProps = () => {};
+const mapDispatchToProps = {
+  addUser
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

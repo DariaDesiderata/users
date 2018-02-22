@@ -9,7 +9,8 @@ export function addUser(user) {
 }
 
 export function deleteUser(user) {
-  return { type: DELETE_USER, payload: { user } };
+  if (window.confirm('Are you sure you want to remove this user?'))
+    return { type: DELETE_USER, payload: { user } };
 }
 
 export function updateUser(user) {

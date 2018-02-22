@@ -2,8 +2,10 @@ import React from 'react';
 import User from './User';
 import { connect } from 'react-redux';
 import { deleteUser, updateUser } from '../actions/actions';
+
 class UserList extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <ul className="userList">
         {this.props.users.map(user =>
@@ -18,9 +20,10 @@ class UserList extends React.Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  users: state.users
-});
+const mapStateToProps = state => {
+  console.log(state, state.users);
+  return { users: state.users };
+};
 const mapDispatchToProps = {
   deleteUser,
   updateUser
