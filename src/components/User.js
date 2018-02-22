@@ -11,26 +11,27 @@ const style = {
 };
 
 const User = props => {
+  const { firstName, lastName, address, onUpdate, onDelete } = props;
   return (
     <li>
       <Paper style={style} zDepth={3}>
         <p>
-          Name: {props.firstName} {props.lastName}
+          Name: {firstName} {lastName}
         </p>
         <p>
-          Street: {props.address.street}
+          Street: {address.street}
         </p>
         <p>
-          City: {props.address.city}
+          City: {address.city}
         </p>
         <p>
-          State: {props.address.state}
+          State: {address.state}
         </p>
         <p>
-          Country: {props.address.country}
+          Country: {address.country}
         </p>
-        <RaisedButton label="Update" primary={true} />
-        <RaisedButton label="Delete" secondary={true} />
+        <RaisedButton label="Update" primary={true} onClick={onUpdate} />
+        <RaisedButton label="Delete" secondary={true} onClick={onDelete} />
       </Paper>
     </li>
   );

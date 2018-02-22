@@ -21,10 +21,10 @@ const initialState = {
     },
     {
       id: 2,
-      firstName: 'Jackie',
-      lastName: 'Cooper',
+      firstName: 'Johnathan',
+      lastName: 'Reese',
       address: {
-        street: '111 Cooper st',
+        street: '111 Reese st',
         city: 'Denver',
         state: 'CO',
         zip: '80218',
@@ -33,10 +33,10 @@ const initialState = {
     },
     {
       id: 3,
-      firstName: 'Jackie',
-      lastName: 'Cooper',
+      firstName: 'Claire',
+      lastName: 'Dennis',
       address: {
-        street: '111 Cooper st',
+        street: '111 Dennis st',
         city: 'Denver',
         state: 'CO',
         zip: '80218',
@@ -45,10 +45,10 @@ const initialState = {
     },
     {
       id: 4,
-      firstName: 'Jackie',
-      lastName: 'Cooper',
+      firstName: 'Stanley',
+      lastName: 'Erickson',
       address: {
-        street: '111 Cooper st',
+        street: '111 Erickson st',
         city: 'Denver',
         state: 'CO',
         zip: '80218',
@@ -81,15 +81,18 @@ const users = (state = [], action) => {
     }
     case 'UPDATE_USER': {
       const { user } = action.payload;
-      if (user.id === state.user.id)
-        return {
-          ...state,
-          ...user
-        };
+      const updatedUser = state.map(item => {
+        if (item.id === user.id) {
+          return { ...item, ...user };
+        }
+        return item;
+      });
+      return updatedUser;
     }
+
     case 'DELETE_USER': {
       const { user } = action.payload;
-      return state.filter(item => item.id !== user.id);
+      return state.users.filter(item => item.id !== user.id);
     }
 
     default:
@@ -98,7 +101,7 @@ const users = (state = [], action) => {
 };
 
 const store = createStore(users, initialState);
-console.log(store.getState());
+
 render(
   <Provider store={store}>
     <App />
