@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  height: 100px;
+  padding: 20px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.App-title {
+  font-size: 2em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.userList {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+@media screen and (max-width: 768px) {
+  .userlist {
+    width: 90%;
+    flex-direction: column;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
