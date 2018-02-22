@@ -5,5 +5,5 @@
 To start:
  -  clone the repo
  - run `npm install`
- - run `npm start` it should start your dev server on port 3000
+ - run `npm start` to start your dev server on port 3000
  
