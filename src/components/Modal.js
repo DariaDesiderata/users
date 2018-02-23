@@ -16,7 +16,7 @@ const textFieldStyle = {
   width: '95%',
   margin: 5
 };
-export default class User extends React.Component {
+export default class Modal extends React.Component {
   state = {
     open: false,
     updatedUser: {}
@@ -77,31 +77,6 @@ export default class User extends React.Component {
       <FlatButton label="Submit" onClick={this.handleSubmit} primary={true} />
     ];
     return (
-      <li>
-        <Paper style={style} zDepth={3}>
-          <div className="userDetails">
-            <p>
-              Name: {firstName} {lastName}
-            </p>
-            <p>
-              Street: {street}
-            </p>
-            <p>
-              City: {city}
-            </p>
-            <p>
-              State: {state}
-            </p>
-            <p>
-              Country: {country}
-            </p>
-          </div>
-          <RaisedButton
-            className="actionButton"
-            label="Update"
-            primary={true}
-            onClick={this.handleOpen}
-          />
           <Dialog
             actions={actions}
             open={this.state.open}
@@ -118,8 +93,6 @@ export default class User extends React.Component {
             secondary={true}
             onClick={onDelete}
           />
-        </Paper>
-      </li>
-    );
+    )
   }
 }

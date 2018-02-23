@@ -71,15 +71,21 @@ const users = (state = [], action) => {
     }
     case 'UPDATE_USER': {
       const { user } = action.payload;
-      const updatedUser = state.map(item => {
+      console.log(user);
+      const updatedUsers = state.users.map(item => {
         if (item.id === user.id) {
+          console.log(user, item);
           return { ...item, ...user };
+        } else {
+          return item;
         }
-        return item;
       });
-      return updatedUser;
+      console.log('updatedUsers', updatedUsers);
+      return {
+        ...state,
+        users: updatedUsers
+      };
     }
-
     case 'DELETE_USER': {
       const { user } = action.payload;
       const filtered = state.users.filter(item => item.id !== user.id);

@@ -12,7 +12,7 @@ class UserList extends React.Component {
             key={user.id}
             user={user}
             onDelete={this.props.deleteUser.bind(this, user)}
-            onUpdate={this.props.updateUser.bind(this, user)}
+            onUpdate={this.props.updateUser}
           />
         )}
       </ul>

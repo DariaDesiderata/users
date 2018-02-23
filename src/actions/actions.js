@@ -5,7 +5,7 @@ export const UPDATE_USER = 'UPDATE_USER';
 
 // action creators
 export function addUser(user) {
-  return { type: ADD_USER, payload: user };
+  return { type: ADD_USER, payload: { user } };
 }
 
 export function deleteUser(user) {
@@ -14,5 +14,6 @@ export function deleteUser(user) {
 }
 
 export function updateUser(user) {
-  return { type: UPDATE_USER, payload: user };
+  console.log(user);
+  return { type: UPDATE_USER, payload: { user } };
 }
