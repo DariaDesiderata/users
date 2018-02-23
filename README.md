@@ -1,6 +1,6 @@
-### About this project
+## About this project
 
-## Simple CRUD type project made with create-react-app, react-redux and materialUI
+### Simple CRUD type project made with create-react-app, react-redux and materialUI
 
 To start:
  -  clone the repo
