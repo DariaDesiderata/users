@@ -11,49 +11,41 @@ const initialState = {
       id: 1,
       firstName: 'Jackie',
       lastName: 'Cooper',
-      address: {
-        street: '111 Cooper st',
-        city: 'Denver',
-        state: 'CO',
-        zip: '80218',
-        country: 'US'
-      }
+      street: '111 Cooper st',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80218',
+      country: 'US'
     },
     {
       id: 2,
       firstName: 'Johnathan',
       lastName: 'Reese',
-      address: {
-        street: '111 Reese st',
-        city: 'Denver',
-        state: 'CO',
-        zip: '80218',
-        country: 'US'
-      }
+      street: '111 Reese st',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80218',
+      country: 'US'
     },
     {
       id: 3,
       firstName: 'Claire',
       lastName: 'Dennis',
-      address: {
-        street: '111 Dennis st',
-        city: 'Denver',
-        state: 'CO',
-        zip: '80218',
-        country: 'US'
-      }
+      street: '111 Dennis st',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80218',
+      country: 'US'
     },
     {
       id: 4,
       firstName: 'Stanley',
       lastName: 'Erickson',
-      address: {
-        street: '111 Erickson st',
-        city: 'Denver',
-        state: 'CO',
-        zip: '80218',
-        country: 'US'
-      }
+      street: '111 Erickson st',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80218',
+      country: 'US'
     }
   ]
 };
@@ -66,13 +58,11 @@ const users = (state = [], action) => {
         id: user.id,
         firstName: user.firstname,
         lastName: user.lasName,
-        address: {
-          street: user.street,
-          city: user.city,
-          state: user.state,
-          zip: user.zip,
-          country: user.country
-        }
+        street: user.street,
+        city: user.city,
+        state: user.state,
+        zip: user.zip,
+        country: user.country
       };
       return {
         ...state,

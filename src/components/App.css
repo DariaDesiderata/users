@@ -28,6 +28,20 @@
   flex-direction: row;
   list-style: none;
 }
+
+.actionButton {
+  margin: 20px;
+}
+.userDetails {
+  padding: 20px;
+}
+.updateUserDialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .userlist {
     width: 90%;

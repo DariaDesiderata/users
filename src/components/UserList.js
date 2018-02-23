@@ -5,15 +5,14 @@ import { deleteUser, updateUser } from '../actions/actions';
 
 class UserList extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <ul className="userList">
         {this.props.users.map(user =>
           <User
             key={user.id}
-            {...user}
+            user={user}
             onDelete={this.props.deleteUser.bind(this, user)}
-            onUpdate={this.props.updateUser}
+            onUpdate={this.props.updateUser.bind(this, user)}
           />
         )}
       </ul>
@@ -21,7 +20,6 @@ class UserList extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state, state.users);
   return { users: state.users };
 };
 const mapDispatchToProps = {
