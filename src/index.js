@@ -54,19 +54,10 @@ const users = (state = [], action) => {
   switch (action.type) {
     case 'ADD_USER': {
       const { user } = action.payload;
-      const newUser = {
-        id: user.id,
-        firstName: user.firstname,
-        lastName: user.lasName,
-        street: user.street,
-        city: user.city,
-        state: user.state,
-        zip: user.zip,
-        country: user.country
-      };
+      state.users.push(user);
       return {
         ...state,
-        newUser
+        users: state.users
       };
     }
     case 'UPDATE_USER': {

@@ -34,6 +34,7 @@ export default class Modal extends React.Component {
           value={user[key]}
           name={key}
           onChange={this.handleChange}
+          placeholder={key}
         />
       );
   }
