@@ -26,8 +26,7 @@ export default class User extends React.Component {
       street,
       city,
       state,
-      country,
-      onDelete
+      country
     } = this.props.user;
     return (
       <li>
@@ -66,7 +65,7 @@ export default class User extends React.Component {
             className="actionButton"
             label="Delete"
             secondary={true}
-            onClick={onDelete}
+            onClick={this.props.onDelete}
           />
         </Paper>
       </li>
