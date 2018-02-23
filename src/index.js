@@ -71,16 +71,13 @@ const users = (state = [], action) => {
     }
     case 'UPDATE_USER': {
       const { user } = action.payload;
-      console.log(user);
       const updatedUsers = state.users.map(item => {
         if (item.id === user.id) {
-          console.log(user, item);
           return { ...item, ...user };
         } else {
           return item;
         }
       });
-      console.log('updatedUsers', updatedUsers);
       return {
         ...state,
         users: updatedUsers

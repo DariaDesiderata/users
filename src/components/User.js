@@ -1,9 +1,7 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
-import TextField from 'material-ui/TextField';
+import Modal from './Modal';
 
 const style = {
   height: 300,
@@ -12,55 +10,15 @@ const style = {
   textAlign: 'center',
   display: 'inline-block'
 };
-const textFieldStyle = {
-  width: '95%',
-  margin: 5
-};
+
 export default class User extends React.Component {
   state = {
-    open: false,
-    updatedUser: {}
+    open: false
+  };
+  toggleModal = value => {
+    this.setState({ open: value });
   };
 
-  componentDidMount() {
-    this.setState({ updatedUser: this.props.user });
-  }
-
-  get fields() {
-    const user = this.state.updatedUser;
-    return Object.keys(user)
-      .slice(1)
-      .map(key =>
-        <TextField
-          style={textFieldStyle}
-          key={key}
-          value={user[key]}
-          name={key}
-          onChange={this.handleChange}
-        />
-      );
-  }
-
-  handleChange = event => {
-    this.setState({
-      updatedUser: {
-        ...this.state.updatedUser,
-        [event.target.name]: event.target.value
-      }
-    });
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-  handleSubmit = () => {
-    this.props.onUpdate(this.state.updatedUser);
-    this.handleClose();
-  };
   render() {
     const {
       firstName,
@@ -71,11 +29,6 @@ export default class User extends React.Component {
       country,
       onDelete
     } = this.props.user;
-
-    const actions = [
-      <FlatButton label="Cancel" primary={true} onClick={this.handleClose} />,
-      <FlatButton label="Submit" onClick={this.handleSubmit} primary={true} />
-    ];
     return (
       <li>
         <Paper style={style} zDepth={3}>
@@ -100,17 +53,14 @@ export default class User extends React.Component {
             className="actionButton"
             label="Update"
             primary={true}
-            onClick={this.handleOpen}
+            onClick={this.toggleModal.bind(this, true)}
           />
-          <Dialog
-            actions={actions}
+          <Modal
+            user={this.props.user}
+            onUpdate={this.props.onUpdate}
             open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-            <div className="updateUserDialog">
-              {this.fields}
-            </div>
-          </Dialog>
+            toggleModal={this.toggleModal}
+          />
 
           <RaisedButton
             className="actionButton"

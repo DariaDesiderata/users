@@ -1,29 +1,26 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 
-const style = {
-  height: 300,
-  width: 300,
-  margin: 20,
-  textAlign: 'center',
-  display: 'inline-block'
-};
 const textFieldStyle = {
   width: '95%',
   margin: 5
 };
 export default class Modal extends React.Component {
-  state = {
-    open: false,
-    updatedUser: {}
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      updatedUser: {}
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   componentDidMount() {
-    this.setState({ updatedUser: this.props.user });
+    this.setState({ updatedUser: this.props.user, open: this.props.open });
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ open: nextProps.open });
   }
 
   get fields() {
@@ -50,49 +47,31 @@ export default class Modal extends React.Component {
     });
   };
 
-  handleOpen = () => {
-    this.setState({ open: true });
+  handleClose = () => {
+    this.props.toggleModal(false);
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
   handleSubmit = () => {
     this.props.onUpdate(this.state.updatedUser);
-    this.handleClose();
+    this.props.toggleModal(false);
   };
   render() {
-    const {
-      firstName,
-      lastName,
-      street,
-      city,
-      state,
-      country,
-      onDelete
-    } = this.props.user;
-
     const actions = [
       <FlatButton label="Cancel" primary={true} onClick={this.handleClose} />,
       <FlatButton label="Submit" onClick={this.handleSubmit} primary={true} />
     ];
     return (
-          <Dialog
-            actions={actions}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-            <div className="updateUserDialog">
-              {this.fields}
-            </div>
-          </Dialog>
-
-          <RaisedButton
-            className="actionButton"
-            label="Delete"
-            secondary={true}
-            onClick={onDelete}
-          />
-    )
+      <React.Fragment>
+        <Dialog
+          actions={actions}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+        >
+          <div className="updateUserDialog">
+            {this.fields}
+          </div>
+        </Dialog>
+      </React.Fragment>
+    );
   }
 }
